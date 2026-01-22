@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Wellbeing Hub - Youth Support Platform",
-  description: "A compassionate, role-based dashboard for youth wellbeing support",
+  title: "NUDGE - Youth Well-being Support",
+  description:
+    "A parent-focused youth well-being support system designed to help families respond appropriately to early, non-crisis signs of mental health strain",
 };
 
 export default function RootLayout({

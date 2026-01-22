@@ -1,34 +1,39 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { ParentDashboard } from './ParentDashboard';
-import { CounselorDashboard } from './CounselorDashboard';
-import { ProfessionalDashboard } from './ProfessionalDashboard';
-import { COLORS } from './SharedComponents';
-import { UserRole } from '@/lib/types';
+import React, { useState } from "react";
+import { ParentDashboard } from "./ParentDashboard";
+import { CounselorDashboard } from "./CounselorDashboard";
+import { ProfessionalDashboard } from "./ProfessionalDashboard";
+import { COLORS } from "./SharedComponents";
+import { UserRole } from "@/lib/types";
 
 export const DashboardMain: React.FC = () => {
-  const [activeRole, setActiveRole] = useState<UserRole>('parent');
+  const [activeRole, setActiveRole] = useState<UserRole>("parent");
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const roles: { id: UserRole; name: string; icon: string; description: string }[] = [
+  const roles: {
+    id: UserRole;
+    name: string;
+    icon: string;
+    description: string;
+  }[] = [
     {
-      id: 'parent',
-      name: 'Parent / Caregiver',
-      icon: '👨‍👧',
-      description: 'Child wellbeing & support',
+      id: "parent",
+      name: "Parent / Caregiver",
+      icon: "👨‍👧",
+      description: "Child wellbeing & support",
     },
     {
-      id: 'counselor',
-      name: 'Guidance Counselor',
-      icon: '👨‍🏫',
-      description: 'Student oversight & support',
+      id: "counselor",
+      name: "Guidance Counselor",
+      icon: "👨‍🏫",
+      description: "Student oversight & support",
     },
     {
-      id: 'professional',
-      name: 'Mental Health Professional',
-      icon: '👨‍⚕️',
-      description: 'Case management & tracking',
+      id: "professional",
+      name: "Mental Health Professional",
+      icon: "👨‍⚕️",
+      description: "Case management & tracking",
     },
   ];
 
@@ -39,15 +44,19 @@ export const DashboardMain: React.FC = () => {
         className={`
         fixed md:relative z-40 h-full w-64 shadow-xl
         transform transition-transform duration-300
-        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+        ${sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
         bg-white border-r border-gray-100/50
         `}
       >
         <div className="p-8 border-b border-gray-100/50">
           {/* Logo/Title */}
-          <h1 className="text-gray-800 text-3xl font-black mb-2 tracking-tight">🌱</h1>
-          <h2 className="text-gray-800 text-xl font-bold">Wellbeing</h2>
-          <p className="text-gray-500 text-xs font-semibold mt-2">Youth Support Hub</p>
+
+          <h2 className="text-blue-600 text-2xl font-black tracking-tight">
+            NUDGE
+          </h2>
+          <p className="text-gray-500 text-xs font-semibold mt-2 leading-relaxed">
+            Youth Well-Being Support System
+          </p>
         </div>
 
         {/* Role Switcher */}
@@ -66,23 +75,30 @@ export const DashboardMain: React.FC = () => {
                 w-full text-left px-4 py-4 rounded-2xl transition-all duration-300 group
                 ${
                   activeRole === role.id
-                    ? 'bg-blue-100/40 border border-blue-200/50'
-                    : 'hover:bg-gray-100/50 border border-transparent'
+                    ? "bg-blue-100/40 border border-blue-200/50"
+                    : "hover:bg-gray-100/50 border border-transparent"
                 }
               `}
             >
               <span className="text-2xl block mb-2">{role.icon}</span>
-              <span className="block font-semibold text-gray-800 text-sm">{role.name}</span>
-              <span className="text-xs text-gray-500 mt-1 block">{role.description}</span>
+              <span className="block font-semibold text-gray-800 text-sm">
+                {role.name}
+              </span>
+              <span className="text-xs text-gray-500 mt-1 block">
+                {role.description}
+              </span>
             </button>
           ))}
         </nav>
 
         {/* Bottom Info */}
         <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-white to-transparent border-t border-gray-100/50 text-gray-600 text-xs">
-          <p className="font-semibold mb-2 text-gray-700">💡 Supportive, not clinical</p>
+          <p className="font-semibold mb-2 text-blue-600">
+            💙 Early support matters
+          </p>
           <p className="leading-relaxed text-gray-600">
-            Compassionate guidance focused on wellbeing.
+            Helping families respond to non-crisis signs of mental health
+            strain.
           </p>
         </div>
       </aside>
@@ -92,7 +108,7 @@ export const DashboardMain: React.FC = () => {
         {/* Mobile Header */}
         <div className="md:hidden sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-gray-100/50 shadow-sm">
           <div className="flex items-center justify-between p-4">
-            <h1 className="font-black text-gray-800">🌱 Wellbeing</h1>
+            <h1 className="font-black text-blue-600">💙 NUDGE</h1>
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
               className="p-2 hover:bg-gray-100 rounded-xl transition-colors text-2xl"
@@ -103,9 +119,9 @@ export const DashboardMain: React.FC = () => {
         </div>
 
         {/* Role-based Dashboard Content */}
-        {activeRole === 'parent' && <ParentDashboard />}
-        {activeRole === 'counselor' && <CounselorDashboard />}
-        {activeRole === 'professional' && <ProfessionalDashboard />}
+        {activeRole === "parent" && <ParentDashboard />}
+        {activeRole === "counselor" && <CounselorDashboard />}
+        {activeRole === "professional" && <ProfessionalDashboard />}
       </main>
 
       {/* Mobile Sidebar Overlay */}
